@@ -1,7 +1,6 @@
 %define major 8
-%define libname %{mklibname KF5Screen}
-%define oldlibname %{mklibname KF5Screen 7}
-%define devname %{mklibname KF5Screen -d}
+%define libname %{mklibname KF6Screen}
+%define devname %{mklibname KF6Screen -d}
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 %define git 20230520
 
@@ -45,7 +44,6 @@ Requires:	%{name}-backend = %{EVRD}
 Summary: The KScreen library
 Group: System/Libraries
 Requires: %{name} = %{EVRD}
-%rename %{oldlibname}
 
 %description -n %{libname}
 The KScreen library
