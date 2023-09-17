@@ -59,14 +59,10 @@ Library for dealing with screen parameters.
 
 %files -f libkscreen6_qt.lang
 %{_datadir}/qlogging-categories6/libkscreen.categories
-%{_bindir}/kscreen-doctor
 %dir %{_qtdir}/plugins/kf6/kscreen
 %{_qtdir}/plugins/kf6/kscreen/KSC_Fake.so
 %{_qtdir}/plugins/kf6/kscreen/KSC_QScreen.so
 %{_libdir}/libexec/kf6/kscreen_backend_launcher
-%{_datadir}/dbus-1/services/org.kde.kscreen.service
-%{_prefix}/lib/systemd/user/plasma-kscreen.service
-%{_datadir}/zsh/site-functions/_kscreen-doctor
 
 %package x11
 Summary:	X11 support for KScreen
@@ -109,6 +105,32 @@ Development files for %{name}.
 %{_libdir}/libKF6ScreenDpms.so
 %{_libdir}/pkgconfig/*.pc
 %{_libdir}/qt6/mkspecs/modules/*
+
+%package -n plasma6-kscreen-doctor
+Summary:	Tool for examining KScreen
+Group:		Development/KDE and Qt
+Requires:	%{libname} = %{EVRD}
+
+%description -n plasma6-kscreen-doctor
+Tool for examining KScreen
+
+%files -n plasma6-kscreen-doctor
+%{_bindir}/kscreen-doctor
+%{_datadir}/zsh/site-functions/_kscreen-doctor
+
+# DBus services are split out for coinstallability with Plasma 5.
+# This package should be merged into the main package once Plasma 5 is dropped.
+%package dbus-service
+Summary:	DBus services for working with KScreen
+Group:		System/Libraries
+Requires:	%{name} = %{EVRD}
+
+%description dbus-service
+DBus services for working with KScreen
+
+%files dbus-service
+%{_datadir}/dbus-1/services/org.kde.kscreen.service
+%{_prefix}/lib/systemd/user/plasma-kscreen.service
 
 #----------------------------------------------------------------------------
 
