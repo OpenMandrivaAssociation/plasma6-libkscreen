@@ -2,7 +2,7 @@
 %define libname %{mklibname KF6Screen}
 %define devname %{mklibname KF6Screen -d}
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
-%define git 20230927
+%define git 20231005
 
 Summary:	Library for dealing with screen parameters
 Name:		plasma6-libkscreen
@@ -75,7 +75,6 @@ X11 support for KScreen
 
 %files x11
 %{_qtdir}/plugins/kf6/kscreen/KSC_XRandR.so
-%{_qtdir}/plugins/kf6/kscreen/KSC_XRandR11.so
 
 %package wayland
 Summary:	Wayland support for KScreen
@@ -104,7 +103,6 @@ Development files for %{name}.
 %{_libdir}/libKF6Screen.so
 %{_libdir}/libKF6ScreenDpms.so
 %{_libdir}/pkgconfig/*.pc
-%{_libdir}/qt6/mkspecs/modules/*
 
 %package -n plasma6-kscreen-doctor
 Summary:	Tool for examining KScreen
