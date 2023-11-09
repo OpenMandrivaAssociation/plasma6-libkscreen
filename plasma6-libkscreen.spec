@@ -2,11 +2,11 @@
 %define libname %{mklibname KF6Screen}
 %define devname %{mklibname KF6Screen -d}
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
-%define git 20231103
+#define git 20231103
 
 Summary:	Library for dealing with screen parameters
 Name:		plasma6-libkscreen
-Version:	5.240.0
+Version:	5.27.80
 Release:	%{?git:0.%{git}.}1
 License:	LGPL
 Group:		System/Libraries
