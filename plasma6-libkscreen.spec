@@ -1,7 +1,7 @@
 %define major 8
 %define libname %{mklibname KF6Screen}
 %define devname %{mklibname KF6Screen -d}
-%define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
+%define stable %([ "$(echo %{version} |cut -d. -f2)" -ge 80 -o "$(echo %{version} |cut -d. -f3)" -ge 80 ] && echo -n un; echo -n stable)
 #define git 20231103
 
 Summary:	Library for dealing with screen parameters
