@@ -7,7 +7,7 @@
 Summary:	Library for dealing with screen parameters
 Name:		plasma6-libkscreen
 Version:	5.90.0
-Release:	%{?git:0.%{git}.}1
+Release:	%{?git:0.%{git}.}2
 License:	LGPL
 Group:		System/Libraries
 Url:		http://kde.org/
@@ -39,6 +39,7 @@ BuildRequires:	doxygen
 BuildRequires:	cmake(Qt6ToolsTools)
 Requires:	%{libname} = %{EVRD}
 Requires:	%{name}-backend = %{EVRD}
+Requires:	%{name}-dbus-service = %{EVRD}
 
 %package -n %{libname}
 Summary: The KScreen library
@@ -150,6 +151,7 @@ Developer documentation for %{name} for use with Qt Assistant
 %cmake \
 	-DBUILD_QCH:BOOL=ON \
 	-DBUILD_WITH_QT6:BOOL=ON \
+	-DBUILD_TESTING:BOOL=ON \
 	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON \
 	-G Ninja
 
