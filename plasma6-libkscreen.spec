@@ -6,7 +6,7 @@
 
 Summary:	Library for dealing with screen parameters
 Name:		plasma6-libkscreen
-Version:	5.91.0
+Version:	5.92.0
 Release:	%{?git:0.%{git}.}1
 License:	LGPL
 Group:		System/Libraries
