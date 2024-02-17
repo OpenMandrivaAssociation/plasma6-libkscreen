@@ -2,17 +2,19 @@
 %define libname %{mklibname KF6Screen}
 %define devname %{mklibname KF6Screen -d}
 %define stable %([ "$(echo %{version} |cut -d. -f2)" -ge 80 -o "$(echo %{version} |cut -d. -f3)" -ge 80 ] && echo -n un; echo -n stable)
-#define git 20231103
+%define git 20240217
+%define gitbranch Plasma/6.0
+%define gitbranchd %(echo %{gitbranch} |sed -e 's,/,-,g')
 
 Summary:	Library for dealing with screen parameters
 Name:		plasma6-libkscreen
-Version:	5.93.0
+Version:	5.94.0
 Release:	%{?git:0.%{git}.}1
 License:	LGPL
 Group:		System/Libraries
 Url:		http://kde.org/
 %if 0%{?git:1}
-Source0:	https://invent.kde.org/plasma/libkscreen/-/archive/master/libkscreen-master.tar.bz2#/libkscreen-%{git}.tar.bz2
+Source0:	https://invent.kde.org/plasma/libkscreen/-/archive/%{gitbranch}/libkscreen-%{gitbranchd}.tar.bz2#/libkscreen-%{git}.tar.bz2
 %else
 Source0:	http://download.kde.org/%{stable}/plasma/%(echo %{version} |cut -d. -f1-3)/libkscreen-%{version}.tar.xz
 %endif
@@ -51,9 +53,9 @@ The KScreen library
 
 %files -n %{libname}
 %{_libdir}/libKF6Screen.so.%{major}*
-%{_libdir}/libKF6Screen.so.5*
+%{_libdir}/libKF6Screen.so.6*
 %{_libdir}/libKF6ScreenDpms.so.%{major}*
-%{_libdir}/libKF6ScreenDpms.so.5*
+%{_libdir}/libKF6ScreenDpms.so.6*
 
 %description
 Library for dealing with screen parameters.
@@ -147,7 +149,7 @@ Developer documentation for %{name} for use with Qt Assistant
 #----------------------------------------------------------------------------
 
 %prep
-%autosetup -n libkscreen-%{?git:master}%{!?git:%{version}} -p1
+%autosetup -n libkscreen-%{?git:%{gitbranchd}}%{!?git:%{version}} -p1
 %cmake \
 	-DBUILD_QCH:BOOL=ON \
 	-DBUILD_WITH_QT6:BOOL=ON \
